@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 
 
-"""
-xrange() создает генератор
-"""
-
-
 def main():
     name = 'Дмитрий'
     counter = 0
