@@ -12,7 +12,8 @@ def page(url):
     return get(url)
 
 
-print page('http://ya.ru/')
-print
-print
-print page('http://google.com/')
+if __name__ == '__main__':
+    print page('http://ya.ru/')
+    print
+    print
+    print page('http://google.com/')
