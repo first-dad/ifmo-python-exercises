@@ -14,4 +14,5 @@ def page(url):
 
 print page('http://ya.ru/')
 print
+print
 print page('http://google.com/')

@@ -12,4 +12,4 @@ def main(action, a, b):
 
 
 if __name__ == '__main__':
-    main()
+    print main('minus', 5, 3)
