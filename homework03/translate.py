@@ -26,6 +26,7 @@ from sys import argv
 from json import load
 
 
+units = None
 speech_parts = {
     'verb': 'глагол',
     'noun': 'существительное',
@@ -33,7 +34,7 @@ speech_parts = {
 }
 
 
-def display_all(units):
+def display_all():
     print '*** Словарь ***'
     print
     for unit in units:
@@ -50,7 +51,7 @@ def display_all(units):
         print
 
 
-def display_type(word, speech_part, units):
+def display_type(word, speech_part):
     for unit in units:
         if unit['word'].encode('utf-8') == word:
             print '%s [%s]' % (unit['word'].encode('utf-8'), unit['transliteration'].encode('utf-8'))
@@ -59,13 +60,13 @@ def display_type(word, speech_part, units):
                 print '- %s' % meaning
 
 
-def display_transliteration(word, units):
+def display_transliteration(word):
     for unit in units:
         if unit['word'].encode('utf-8') == word:
             print '%s [%s]' % (unit['word'].encode('utf-8'), unit['transliteration'].encode('utf-8'))
 
 
-def display_unit(word, units):
+def display_word(word):
     for unit in units:
         if unit['word'].encode('utf-8') == word:
             print '%s [%s]' % (unit['word'].encode('utf-8'), unit['transliteration'].encode('utf-8'))
@@ -82,20 +83,21 @@ def display_unit(word, units):
 
 def main(options):
     dictionary = open('dictionary.json', 'r')
+    global units
     units = load(dictionary)
 
     if len(options) == 0:
-        display_all(units)
+        display_all()
     elif len(options) == 1:
-        display_unit(options[0], units)
+        display_word(options[0])
     else:
         for option in options[1:]:
             index = options.index(option) + 1
 
             if option == '-t':
-                display_type(options[0], options[index], units)
+                display_type(options[0], options[index])
             elif option == '-l':
-                display_transliteration(options[0], units)
+                display_transliteration(options[0])
 
     dictionary.close()
 
