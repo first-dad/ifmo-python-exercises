@@ -5,19 +5,20 @@
 """
 Переводчик
 
-Запускать через командную строку
-
 ./translate.py
 выведет полное содержимое словаря
 
 ./translate.py run
-слово, транскрипцию и значения во всех частях речи
+слово, транскрипция и значения во всех частях речи
 
-./translate.py run -t verb
+./translate.py run -[v | n | a]
 слово, транскрипция и значения
-в указаной части речи после параметра -t
+в указаной части речи
+-v - глагол
+-т - существительное
+-a - прилагательное
 
-./translate.py run -l
+./translate.py run -t
 слово и транслитерация
 """
 
@@ -31,6 +32,11 @@ speech_parts = {
     'verb': 'глагол',
     'noun': 'существительное',
     'adjective': 'прилагательное'
+}
+options_aliases = {
+    '-v': 'verb',
+    '-n': 'noun',
+    '-a': 'adjective' 
 }
 
 
@@ -55,6 +61,7 @@ def display_type(word, speech_part):
     for unit in units:
         if unit['word'].encode('utf-8') == word:
             print '%s [%s]' % (unit['word'].encode('utf-8'), unit['transliteration'].encode('utf-8'))
+            print
             print '%s:' % speech_parts[speech_part]
             for meaning in unit['meaning'][speech_part]:
                 print '- %s' % meaning
@@ -66,7 +73,7 @@ def display_transliteration(word):
             print '%s [%s]' % (unit['word'].encode('utf-8'), unit['transliteration'].encode('utf-8'))
 
 
-def display_word(word):
+def display_unit(word):
     for unit in units:
         if unit['word'].encode('utf-8') == word:
             print '%s [%s]' % (unit['word'].encode('utf-8'), unit['transliteration'].encode('utf-8'))
@@ -89,14 +96,14 @@ def main(options):
     if len(options) == 0:
         display_all()
     elif len(options) == 1:
-        display_word(options[0])
+        display_unit(options[0])
     else:
         for option in options[1:]:
             index = options.index(option) + 1
 
-            if option == '-t':
-                display_type(options[0], options[index])
-            elif option == '-l':
+            if option in options_aliases:
+                display_type(options[0], options_aliases[option])
+            elif option == '-t':
                 display_transliteration(options[0])
 
     dictionary.close()
