@@ -111,8 +111,6 @@ def main(options):
         display_unit(options[0])
     else:
         for option in options[1:]:
-            index = options.index(option) + 1
-
             if option in options_aliases:
                 display_type(options[0], options_aliases[option])
             elif option == '-t':
