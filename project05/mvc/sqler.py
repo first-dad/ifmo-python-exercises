@@ -4,7 +4,11 @@
 def sqler(user_id):
     import sqlite3
 
-    con = sqlite3.connect('books_db.sqlite')
+    try:
+        con = sqlite3.connect('books_db.sqlite')
+    except:
+        raise Exception("Can't connect to database")
+
     cur = con.cursor()
 
     cur.execute(

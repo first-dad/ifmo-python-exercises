@@ -11,7 +11,7 @@ from mvc.sqler import sqler
 
 if __name__ == '__main__':
     if len(argv) < 2:
-        url = raw_input('Type uri to parse:\n')
+        url = raw_input('Type url to parse:\n')
     else:
         url = argv[1]
 

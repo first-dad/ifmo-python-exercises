@@ -1,0 +1,19 @@
+ h1 { 
+  text-align: center
+  font-size: 20pt; 
+  font-family: Verdana; 
+  color: #333366;
+ }
+   p { 
+  font-size: 15pt; 
+  font-family: Verdana; 
+  color: #ea8df7;
+   }
+   .prov{
+  
+  width:500px;
+  height:300px;
+  background:yellow;
+  box-shadow:6px 6px 2px #000;
+  opacity: 0.7;
+  }

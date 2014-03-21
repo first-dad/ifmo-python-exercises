@@ -3,7 +3,7 @@
 
 def urler(url):
     if type(url) != str:
-        raise Exception('Url is not good')
+        raise Exception('uri type must be string')
 
     url = url.split('?')
     param = url[1].split('=')
