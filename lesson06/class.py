@@ -3,6 +3,7 @@
 
 
 class Bird:
+    size = 'small'
 
     def __init__(self):
         pass
@@ -19,14 +20,22 @@ class Duck(Bird):
     pass
 
 
-# Множественное наследование
+# Множественное наследование и переопределение
 class Goose(Duck, Bird):
-    pass
+    def __init__(self):
+        self.size = 'Big'
+
+    # ф-ия переопределена
+    def fly(self):
+        print 'Гусь летит'
 
 
 if __name__ == '__main__':
     bird = Bird()
     bird.fly()
+
+    goose = Goose()
+    goose.fly()
 
     # Duck является субклассом Bird
     print issubclass(Duck, Bird)
