@@ -12,4 +12,4 @@ class A(object):
 if __name__ == '__main__':
     a = A()
 
-    print a.age
+    print a.test

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-import weakref
+from weakref import ref
 
 
 class A:
@@ -15,7 +15,7 @@ class B(object):
         pass
 
     def set(self, value):
-        self.value = weakref.ref(value)
+        self.value = ref(value)
 
 
 if __name__ == '__main__':
