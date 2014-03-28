@@ -4,6 +4,13 @@
 
 from random import shuffle, choice
 
+""""
+свойства
+стат методы
+абстрактные
+метод класса
+мета класса
+"""
 
 class Card(object):
     suit = None
@@ -71,26 +78,32 @@ class Person(Human):
 
 
 class Player(Person):
-    hand = []
+    def __init__(self, *data):
+        super(Player, self).__init__(*data)
+        self.hand = []
 
     def fill_hand(self, cards):
-        """ BUG: self.hand += cards """
-        self.hand = self.hand + cards
+        # self.hand = self.hand + cards
+        self.hand += cards
 
     def get_hand(self):
         return self.hand
+
+    def get_card(self):
+        if len(self.hand) > 0:
+            return self.hand.pop()
 
 
 class Durak():
     players = None
 
-    def __init__(self, deck, *players):
+    def __init__(self, cards, *players):
         if len(players) != 2:
             raise Exception('Need two players')
         else:
             self.players = players
 
-        self.deck = deck
+        self.deck = cards
 
     def play(self):
         card = choice(self.players[0].hand)
@@ -108,5 +121,13 @@ if __name__ == '__main__':
     alex.fill_hand(deck.get_cards())
     john.fill_hand(deck.get_cards())
 
-    durak = Durak(deck, alex, john)
-    durak.play()
+    a = 7
+    while a > 0:
+        print alex.get_card()
+        a -= 1
+
+    for card in alex.get_hand():
+        print card.suit, card.rank
+
+    # durak = Durak(deck, alex, john)
+    # durak.play()
