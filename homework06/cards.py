@@ -84,11 +84,18 @@ class Player(Person):
 class Durak():
     players = None
 
-    def __init__(self, *players):
+    def __init__(self, deck, *players):
         if len(players) != 2:
             raise Exception('Need two players')
         else:
             self.players = players
+
+        self.deck = deck
+
+    def play(self):
+        card = choice(self.players[0].hand)
+        print card.rank
+        print deck.ranks.index(card.rank)
 
 
 if __name__ == '__main__':
@@ -101,4 +108,5 @@ if __name__ == '__main__':
     alex.fill_hand(deck.get_cards())
     john.fill_hand(deck.get_cards())
 
-    durak = Durak(alex, john)
+    durak = Durak(deck, alex, john)
+    durak.play()
